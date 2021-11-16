@@ -1,0 +1,35 @@
+{
+  "name": "backend-app",
+  "version": "1.0.0",
+  "description": "Backend de la aplicación ",
+  "main": "server.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DianaMsJz/backend-app-delivery.git"
+  },
+  "keywords": [
+    "flutter",
+    "delivery",
+    "nodejs"
+  ],
+  "author": "Diana Miramontes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DianaMsJz/backend-app-delivery/issues"
+  },
+  "homepage": "https://github.com/DianaMsJz/backend-app-delivery#readme",
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "pg-promise": "^10.11.1"
+  }
+}
