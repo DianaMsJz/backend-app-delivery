@@ -1,9 +1,9 @@
 //Configurar la conexión con la base de datos
 
 const promise = require('bluebird');
-const options = {
+const options = { //objeto
     promiseLib: promise,
-    query: (e) => {}
+    query: (e) => {}//retornar una función
 }
 
 const pgp = require('pg-promise')(options);
@@ -13,11 +13,11 @@ types.setTypeParser(1114, function(stringValue) {
 });
 
 const databaseConfig = {
-    'host': '127.0.0.1',
+    'host': '127.0.0.1', //el mismo host definido en pgAdmin
     'port': 5432,
     'database': 'delivery_db',
     'user': 'postgres',
-    'password': 'secretdoor99'
+    'password': 'secretdoor99' //el del servidor de pgAdmin
 };
 
 const db = pgp(databaseConfig);
