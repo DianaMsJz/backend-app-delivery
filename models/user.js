@@ -1,8 +1,11 @@
 //crear todas las consultas o sentencias en sql
 
 const db = require('../config/config'); //importa la variable db del archivo config.js
+const crypto = require('crypto');
+
 
 const User = {}; //objeto
+
 
 // método para obtener los usuarios de la tabla users
 User.getAll = () => {
@@ -18,6 +21,10 @@ User.getAll = () => {
 
 //metodo para Crear un nuevo usuario
 User.create = (user) => {
+
+const myPasswordHashed = crypto.createHash('md5').update(user.password).digest('hex');
+user.password = myPasswordHashed;
+
     const sql = `
     INSERT INTO
         users(
