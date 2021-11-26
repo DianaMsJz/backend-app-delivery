@@ -19,11 +19,51 @@ User.getAll = () => {
     return db.manyOrNone(sql) //retorna muchos o ningún usuario (en caso de que la tabla esté vacía)
 }
 
+//método para obtener un usuario por ID
+
+User.findById = (id, callback) => {
+
+    const sql = `
+    SELECT
+        id,
+        email,
+        name,
+        lastname,
+        image,
+        phone,
+        password,
+        session_token
+    FROM
+        users
+    WHERE
+        id = $1`;
+
+    return db.oneOrNone(sql, id).then(user => { callback(null, user); })
+}
+
+//metodo para buscar un usuario segun su email
+User.findByEmail = (email) => {
+    const sql = `
+    SELECT
+        id,
+        email,
+        name,
+        lastname,
+        image,
+        phone,
+        password,
+        session_token
+    FROM
+        users
+    WHERE
+        email = $1`;
+    return db.oneOrNone(sql, email);
+}
 //metodo para Crear un nuevo usuario
 User.create = (user) => {
 
-const myPasswordHashed = crypto.createHash('md5').update(user.password).digest('hex');
-user.password = myPasswordHashed;
+    const myPasswordHashed = crypto.createHash('md5').update(user.password).digest('hex');//encriptar el password con el formato md5
+    user.password = myPasswordHashed;
 
     const sql = `
     INSERT INTO
@@ -52,4 +92,11 @@ user.password = myPasswordHashed;
     ]);
 }
 
+User.isPasswordMatched = (userPassword, hash) => {
+    const myPasswordHashed = crypto.createHash('md5').update(userPassword).digest('hex');
+    if (myPasswordHashed === hash) { // exactamente igual
+        return true;
+    }
+    return false;
+}
 module.exports = User;
