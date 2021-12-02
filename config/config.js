@@ -17,7 +17,7 @@ const databaseConfig = {
     'port': 5432,
     'database': 'delivery_db',
     'user': 'postgres',
-    'password': 'Cornerstone-99' //el del servidor de pgAdmin
+    'password': 'secretdoor99' //el del servidor de pgAdmin
 };
 
 const db = pgp(databaseConfig);

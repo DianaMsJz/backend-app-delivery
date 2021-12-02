@@ -56,7 +56,7 @@ module.exports = { //se exporta todo el objeto
             }
             if (User.isPasswordMatched(password, myUser.password)){ // si el password insertado coincide con el guardado en la bd
                 const token = jwt.sign({id: myUser.id, email: myUser.email}, keys.secretOrKey, {
-                    // expiresIn: (60*60*24) // 1 hora
+                    // expiresIn: (60*60*24) // 1 hora 
                 });
                 const data = {//información que se va a retornar cuando el usuario haga login
                     id: myUser.id,

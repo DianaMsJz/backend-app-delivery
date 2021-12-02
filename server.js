@@ -1,5 +1,7 @@
 // Middleware: Son esos métodos/funciones/operaciones que se denominan ENTRE el procesamiento de la Solicitud y
 // el envío de la Respuesta en su método de aplicación.
+//Cors: Es un mecanismo para permitir o restringir los recursos solicitados en un servidor web dependiendo de
+// dónde se inició la solicitud HTTP.
 
 const express = require('express'); // se requiere el modulo express
 const app = express(); // se ejecuta express para inicializar la aplicación
