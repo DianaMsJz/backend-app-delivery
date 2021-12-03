@@ -31,7 +31,7 @@ app.set('port', port);
 //Llamando a las rutas
 users(app);
 
-server.listen(3000, '192.168.56.1' || 'localhost', function() {
+server.listen(3000, '192.168.1.66' || 'localhost', function() {
     console.log('Aplicación con NodeJS ' + port + ' Iniciada...')//prueba
 });
 
