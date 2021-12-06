@@ -1,5 +1,6 @@
 //Await: espera hasta que se ejecute la consulta para seguir con otra instrucción
 const User = require('../models/user'); //Para acceder al modelo user
+const Rol = require('../models/rol');
 const jwt = require('jsonwebtoken');
 const keys = require('../config/keys');
 
@@ -26,9 +27,11 @@ module.exports = { //se exporta todo el objeto
             const user = req.body;//se capturan los datos de un usuario que envía el cliente
             const data = await User.create(user);
 
+            await Rol.create(data.id, 1); // rol 1(cliente) por defecto
+
             return res.status(201).json({ // respuesta para el usuario
                 success: true,
-                message: 'El registro se realizo correctamente',
+                message: 'El registro se realizo correctamente, ahora inicia sesión',
                 data: data.id,// se retorna el id
             });
         } 
@@ -65,7 +68,10 @@ module.exports = { //se exporta todo el objeto
                     phone: myUser.phone,
                     image: myUser.image,
                     session_token: `JWT ${token}`,
+                    roles: myUser.roles
                 }
+
+                console.log(`USUARIO ENVIADO ${data}`);
 
                 return res.status(201).json({
                     success: true,
